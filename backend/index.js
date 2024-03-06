@@ -11,7 +11,7 @@ const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/order");
 
 // [SECTION] Environment Setup
-const port = 4004;
+const port = 4000;
 
 const app = express();
 
@@ -29,10 +29,10 @@ mongoose.connection.once("open", () =>
 );
 
 // [SECTION] Backend Routes
-app.use("/b4/users", userRoutes);
-app.use("/b4/products", productRoutes);
-app.use("/b4/cart", cartRoutes);
-app.use("/b4/order", orderRoutes);
+app.use("/users", userRoutes);
+app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
+app.use("/order", orderRoutes);
 
 // [SECTION] Server Gateway Response
 if (require.main === module) {
