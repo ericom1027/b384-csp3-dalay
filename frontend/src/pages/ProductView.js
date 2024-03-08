@@ -17,7 +17,7 @@ export default function ProductView() {
   const addToCart = () => {
     const subTotal = price * quantity;
 
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/add-to-cart`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/cart/add-to-cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function ProductView() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:4000/products/${productId}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

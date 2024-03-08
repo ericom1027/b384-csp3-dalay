@@ -3,13 +3,16 @@ import Swal from "sweetalert2";
 
 export default function ArchiveProduct({ product, isActive, fetchData }) {
   const archiveToggle = (productId) => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/products/${productId}/archive`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/products/${productId}/archive`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -32,13 +35,16 @@ export default function ArchiveProduct({ product, isActive, fetchData }) {
   };
 
   const activateToggle = (productId) => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/products/${productId}/activate`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/products/${productId}/activate`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

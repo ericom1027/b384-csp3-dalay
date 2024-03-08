@@ -12,8 +12,8 @@ export default function Products() {
   const fetchData = () => {
     let fetchUrl =
       user.isAdmin === true
-        ? `${process.env.REACT_APP_API_BASE_URL}/products/all`
-        : `${process.env.REACT_APP_API_BASE_URL}/products/`;
+        ? `${process.env.REACT_APP_BACKEND_URL}/products/all`
+        : `${process.env.REACT_APP_BACKEND_URL}/products/`;
 
     fetch(fetchUrl, {
       headers: {

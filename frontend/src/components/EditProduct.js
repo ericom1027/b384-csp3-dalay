@@ -12,7 +12,7 @@ export default function EditProduct({ product, fetchData }) {
   const [showEdit, setShowEdit] = useState(false);
 
   const openEdit = (productId) => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/products/${productId}`)
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         setProductId(data.product._id);
@@ -34,7 +34,7 @@ export default function EditProduct({ product, fetchData }) {
   const editProduct = (e, productId) => {
     e.preventDefault();
 
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/products/${productId}/update`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}/update`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
