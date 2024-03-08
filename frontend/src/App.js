@@ -26,7 +26,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/users/details`, {
+    fetch(`https://products-backend-h4em.onrender.com/users/details`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

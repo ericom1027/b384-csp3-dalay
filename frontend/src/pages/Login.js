@@ -12,7 +12,7 @@ export default function Login() {
 
   function authenticate(e) {
     e.preventDefault();
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/users/login`, {
+    fetch(`https://products-backend-h4em.onrender.com/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ export default function Login() {
   }
 
   const retrieveUserDetails = (token) => {
-    fetch(`${process.env.REACT_APP_API_BASE_URL}/users/details`, {
+    fetch(`https://products-backend-h4em.onrender.com/users/details`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

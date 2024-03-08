@@ -8,7 +8,7 @@ const ProductSearch = () => {
   const handleSearch = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/products/searchByName`,
+        `https://products-backend-h4em.onrender.com/products/searchByName`,
         {
           method: "POST",
           headers: {

@@ -20,7 +20,7 @@ export default function AddProduct() {
     let token = localStorage.getItem("token");
     console.log(token);
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/products/`, {
+    fetch(`https://products-backend-h4em.onrender.com/products/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

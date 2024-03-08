@@ -12,8 +12,8 @@ export default function Products() {
   const fetchData = () => {
     let fetchUrl =
       user.isAdmin === true
-        ? `${process.env.REACT_APP_BACKEND_URL}/products/all`
-        : `${process.env.REACT_APP_BACKEND_URL}/products/`;
+        ? `https://products-backend-h4em.onrender.com/products/all`
+        : `https://products-backend-h4em.onrender.com/products/`;
 
     fetch(fetchUrl, {
       headers: {

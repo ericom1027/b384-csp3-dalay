@@ -12,7 +12,7 @@ export default function EditProduct({ product, fetchData }) {
   const [showEdit, setShowEdit] = useState(false);
 
   const openEdit = (productId) => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
+    fetch(`https://products-backend-h4em.onrender.com/products/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         setProductId(data.product._id);
@@ -34,18 +34,21 @@ export default function EditProduct({ product, fetchData }) {
   const editProduct = (e, productId) => {
     e.preventDefault();
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}/update`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({
-        name: name,
-        description: description,
-        price: price,
-      }),
-    })
+    fetch(
+      `https://products-backend-h4em.onrender.com/products/${productId}/update`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          name: name,
+          description: description,
+          price: price,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

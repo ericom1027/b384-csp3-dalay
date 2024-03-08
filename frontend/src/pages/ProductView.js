@@ -17,7 +17,7 @@ export default function ProductView() {
   const addToCart = () => {
     const subTotal = price * quantity;
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/cart/add-to-cart`, {
+    fetch(`https://products-backend-h4em.onrender.com/cart/add-to-cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function ProductView() {
   };
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/products/${productId}`)
+    fetch(`https://products-backend-h4em.onrender.com/products/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

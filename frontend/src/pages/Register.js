@@ -25,7 +25,7 @@ export default function Register() {
   function registerUser(e) {
     e.preventDefault();
 
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/users/register`, {
+    fetch(`https://products-backend-h4em.onrender.com/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
