@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
+require("dotenv");
 // User defined string data that will be used to create our JSON web tokens
 // Used in the algorithm for encrypting our data which makes it difficult to decode the information without the defined secret keyword
-const secret = "ecommerce-product";
-
+const secret = process.env.JWT_SECRET;
 // [SECTION] JSON Web Tokens
 /*
 	- JSON Web Tokens or JWT is a way of securely passing information from the server to the client or other parts of a server

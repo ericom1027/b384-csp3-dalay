@@ -1,7 +1,7 @@
 // [SECTION] Dependencies and Modules
 const express = require("express");
 const mongoose = require("mongoose");
-
+require("dotenv").config();
 // Allows our backend application to be available to our frontend application
 // Allows us to control the app's Cross-Origin Resources Sharing settings
 const cors = require("cors");
@@ -20,13 +20,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // [SECTION] Database Connection
-mongoose.connect(
-  "mongodb+srv://ericsondalay:Er102784@cluster0.petxqzv.mongodb.net/ecommerce-product?retryWrites=true&w=majority"
-);
+const connectToDatabase = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-mongoose.connection.once("open", () =>
-  console.log("Now connected to MongoDB Atlas.")
-);
+    console.log("Connected to MongoDB Atlas successfully.");
+  } catch (error) {
+    console.error("Error connecting to MongoDB Atlas:", error);
+  }
+};
+
+connectToDatabase();
 
 // [SECTION] Backend Routes
 app.use("/users", userRoutes);
