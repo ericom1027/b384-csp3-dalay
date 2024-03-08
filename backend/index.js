@@ -11,13 +11,17 @@ const cartRoutes = require("./routes/cart");
 const orderRoutes = require("./routes/order");
 
 // [SECTION] Environment Setup
-const port = 4000;
+const port = 5000;
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.get("/", (req, res) => {
+  res.setHeader("Access.Control-Allow-Credentials", "true");
+  res.send("API is running..");
+});
 
 // [SECTION] Database Connection
 const connectToDatabase = async () => {
