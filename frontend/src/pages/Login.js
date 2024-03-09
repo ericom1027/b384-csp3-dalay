@@ -1,7 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
 import UserContext from "../UserContext";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
+import { MdMailOutline, MdLockOutline } from "react-icons/md";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import logo from "../assets/eco_logo.png";
+
 import Swal from "sweetalert2";
 
 export default function Login() {
@@ -76,44 +80,81 @@ export default function Login() {
     }
   }, [email, password]);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   return user.id !== null ? (
     <Navigate to="/products" />
   ) : (
     <div className="row mt-3 justify-content-center">
-      <div className="col-12 col-md-8 col-xl-4">
+      <div className="col-12 col-md-8 col-xl-4 mx-auto" id="container-login">
+        <Link to={`/`} className="position-absolute top-0 end-0 mt-2 me-2">
+          <i className="bi bi-x bi-smaller"></i>
+        </Link>
         <Form onSubmit={(e) => authenticate(e)}>
-          <h1 className="my-5 text-center">Login</h1>
+          <img
+            src={logo}
+            alt="Logo"
+            className="my-2 mx-auto d-block"
+            id="img-logo"
+          />
           <Form.Group controlId="userEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <Form.Label>Email</Form.Label>
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text">
+                  <MdMailOutline />
+                </span>
+              </div>
+              <Form.Control
+                type="email"
+                placeholder="example@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
           </Form.Group>
 
           <Form.Group controlId="password" className="mb-3">
             <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text">
+                  <MdLockOutline />
+                </span>
+              </div>
+              <Form.Control
+                type={showPassword ? "text" : "password"}
+                placeholder="********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <div className="input-group-append">
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </Button>
+              </div>
+            </div>
           </Form.Group>
 
           {isActive ? (
-            <Button variant="primary" type="submit" id="submitBtn">
+            <Button variant="success" type="submit" id="submitBtn">
               Submit
             </Button>
           ) : (
-            <Button variant="primary" type="submit" id="submitBtn" disabled>
-              Submit
+            <Button variant="success" type="submit" id="submitBtn" disabled>
+              Sign in
             </Button>
           )}
+          <Link to={"/register"}>
+            <label className="registerlabel">
+              Don't have an account? Register here
+            </label>
+          </Link>
         </Form>
       </div>
     </div>

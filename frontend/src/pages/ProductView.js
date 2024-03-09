@@ -94,31 +94,35 @@ export default function ProductView() {
               <Card.Text>PhP {price}</Card.Text>
               {user.id !== null ? (
                 <>
-                  <Row className="mb-3">
-                    <Col xs={2}>
+                  <Row className=" mb-2 justify-content-center">
+                    <Col xs={3} className="text-right">
                       <Button
                         variant="secondary"
-                        size="sm" // Set the size to small
+                        size="sm"
                         onClick={() => setQuantity(Math.max(0, quantity - 1))}
+                        className="mb-2"
                       >
                         -
                       </Button>
                     </Col>
-                    <Col xs={8}>
+                    <Col xs={5} className="text-center">
                       <input
                         type="number"
                         value={quantity}
                         min="0"
                         max="20"
-                        readOnly
+                        onChange={(e) =>
+                          handleQuantityChange(parseInt(e.target.value))
+                        }
                         className="form-control"
                       />
                     </Col>
-                    <Col xs={2}>
+                    <Col xs={2} className="text-left">
                       <Button
                         variant="secondary"
-                        size="sm" // Set the size to small
+                        size="sm"
                         onClick={() => setQuantity(Math.min(20, quantity + 1))}
+                        className="mb-2"
                       >
                         +
                       </Button>
@@ -134,7 +138,7 @@ export default function ProductView() {
                   </Button>
                 </>
               ) : (
-                <Link className="btn btn-danger btn-block" to="/login">
+                <Link className="btn btn-info btn-block" to="/login">
                   Please Login!
                 </Link>
               )}
